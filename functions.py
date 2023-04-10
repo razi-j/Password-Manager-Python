@@ -49,9 +49,12 @@ class Pwman:
             cls.genSalt()
             cls.keygen(pw)
             print("Key Generated")
-            time.sleep("5")
-            os.system("cls")
-        
+            time.sleep(5)
+            if os.name =="nt":
+                os.system("cls")
+            elif os.name =="posix":
+                os.system("clear")
+
     @classmethod        
     def genSalt(cls):
         with open("./salt", "wb") as saltf:
@@ -68,7 +71,11 @@ class Pwman:
         if os.path.exists("./key") == False:
             print("Generate Your Key First!")
             time.sleep()
-            os.system("cls")
+            if os.name =="nt":
+                os.system("cls")
+            elif os.name =="posix":
+                os.system("clear")
+
         mainpass = getpass.getpass("Main Password: ")
         if cls.keygen(mainpass) == key:
             print("Authorization Complete!")
@@ -77,19 +84,25 @@ class Pwman:
         else:
             print("Incorrect Password! Closing in 5 Seconds!")
             time.sleep(5)
-            os.system("cls")
+            if os.name =="nt":
+                os.system("cls")
+            elif os.name =="posix":
+                os.system("clear")
             quit()
     
     @classmethod
     def addPassword(cls,Fer):
         acc = input("Site/App: ")
         username = input("Username: ")
-        passw = getpass.getpass("Password: ", "*")
+        passw = getpass.getpass("Password: ")
         with open("logs.db", "a") as logs:
             logs.write(acc+"|"+username+"|"+Fer.encrypt(passw.encode()).decode()+"\n")
         print("Successfully Added the Password")
         time.sleep(3)
-        os.system("cls")
+        if os.name =="nt":
+                os.system("cls")
+        elif os.name =="posix":
+                os.system("clear")
 
     @classmethod 
     def view(cls, fer):
@@ -99,4 +112,7 @@ class Pwman:
                 acc,user,pwd = data.split('|')
                 print("Site/App:", acc, "    " "Username:", user, "   ", "Password:", fer.decrypt(pwd.encode()).decode())
             input("Press Any Key to Return to Menu")
-            os.system("cls")
+            if os.name =="nt":
+                os.system("cls")
+            elif os.name =="posix":
+                os.system("clear")

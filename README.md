@@ -18,6 +18,9 @@
       <li> Add Your Passwords </li>
       <li> View Your Passwords! </li>
   </ol>
+ <h3>After doing those steps your Password Manager directory would look something like:</h3>
+ <br>
+ <img width="80%" src="https://github.com/razi-j/Password-Manager-Python/blob/b8a78ee557f653b176f677669a61f42582773f13/Screenshot%20from%202023-04-11%2000-39-18.png"/>
   </p>
 </div>
 
